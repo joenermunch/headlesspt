@@ -1,0 +1,55 @@
+@import "fonts.scss";
+@import "reset.scss";
+@import "variables.scss";
+
+body .wp-site-blocks > * + * {
+  margin: 0;
+}
+
+body .wp-site-blocks {
+  padding: 0;
+}
+
+.main-margin {
+  margin: 0px auto;
+  max-width: 1600px;
+  padding: 0px 30px;
+}
+
+.main-cta .wp-block-button .wp-element-button {
+  background: $hightlight;
+  transition: 0.2s;
+  border: 2px solid transparent;
+  font-weight: bold;
+  font-size: 14px;
+
+  &:hover {
+    background: $background-dark;
+    border-color: $white;
+    color: $white;
+  }
+}
+
+.inner-block {
+  padding: 60px 0px;
+}
+
+@media only screen and (min-width: 1000px) {
+  .main-margin {
+    padding: 0 150px;
+  }
+
+  .inner-block {
+    padding: 100px 0px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+  .main-margin {
+    padding: 0 50px;
+  }
+
+  .inner-block {
+    padding: 80px 0px;
+  }
+}
