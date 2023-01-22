@@ -41,9 +41,13 @@ export default function Projects() {
     let filteredarray = [];
 
     allPosts.map((post) => {
+      // checks all posts array if post has the selected tax
+
       const found = selectedTaxonomies.some(
         (r) => post.Stack.indexOf(parseInt(r)) >= 0
       );
+
+      // if found, include the post on the filtered posts array
 
       if (found && !filteredarray.includes(post)) {
         filteredarray.push(post);
@@ -56,15 +60,15 @@ export default function Projects() {
   // tax select
 
   const taxonomyClicked = (e) => {
-    if (selectedTaxonomies.includes(e.target.dataset.id)) {
-      setSelectedTaxonomies(
-        selectedTaxonomies.filter(
-          (taxonomy) => taxonomy !== e.target.dataset.id
+    // check if it is already selected, if so, unselect
+
+    selectedTaxonomies.includes(e.target.dataset.id)
+      ? setSelectedTaxonomies(
+          selectedTaxonomies.filter(
+            (taxonomy) => taxonomy !== e.target.dataset.id
+          )
         )
-      );
-    } else {
-      setSelectedTaxonomies([...selectedTaxonomies, e.target.dataset.id]);
-    }
+      : setSelectedTaxonomies([...selectedTaxonomies, e.target.dataset.id]);
   };
 
   const RenderTaxonomies = () => {
@@ -91,6 +95,8 @@ export default function Projects() {
   };
 
   const RenderPosts = () => {
+    // display all posts if filter is not selected
+
     let filter = filteredPosts.length > 0 ? filteredPosts : allPosts;
 
     if (filter.length > 0) {
