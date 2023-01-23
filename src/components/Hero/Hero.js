@@ -9,7 +9,7 @@ export default function Hero() {
           <span>Hello! I'm</span>
         </div>
         <h1>
-          Joener Münch
+          Joener Münch.
           <br />
           <strong>WordPress Developer.</strong>
         </h1>

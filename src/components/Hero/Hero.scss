@@ -1,19 +1,23 @@
 @import "../../scss/variables.scss";
 
 .hero-container {
-  background-color: $background-dark;
+  background-color: $white;
   color: #fff;
   padding-top: 110px;
 
   h1 {
     margin: 0 0 25px 0;
-    color: $white;
-    font-family: $main-font;
-    font-size: clamp(35px, 8vw, 60px);
+    color: $black;
+    font-family: $titles;
+    font-size: clamp(35px, 8vw, 80px);
+
+    strong {
+      font-weight: bold;
+    }
   }
 
   p {
-    color: $white;
+    color: $black;
     font-family: $main-font;
     max-width: 600px;
     margin: 0 0 50px 0;
@@ -24,10 +28,15 @@
 
     span {
       font-family: $main-font;
-      color: $hightlight;
+      font-weight: 500;
+      color: $highlight;
       font-size: clamp(18px, 5vw, 25px);
       letter-spacing: 2px;
     }
+  }
+
+  .main-cta {
+    margin-top: 50px;
   }
 }
 

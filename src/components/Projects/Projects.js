@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Projects.scss";
+import Filterizr from "filterizr";
 
 export default function Projects() {
   const [allPosts, setData] = useState([]);
   const [gotData, setGotData] = useState(false);
+  const [gotRender, setRender] = useState(false);
   const [taxonomies, setTaxonomies] = useState([]);
   const [gotTaxonomies, setGotTaxonomies] = useState(false);
   const [selectedTaxonomies, setSelectedTaxonomies] = useState([]);
@@ -12,7 +14,7 @@ export default function Projects() {
 
   const loadData = async () => {
     try {
-      const response = await axios.get("/wp-json/wp/v2/project");
+      const response = await axios.get("/backend/wp-json/wp/v2/project?_embed");
       setData(response.data);
       setGotData(true);
     } catch (err) {
@@ -22,7 +24,7 @@ export default function Projects() {
 
   const loadTax = async () => {
     try {
-      const response = await axios.get("/wp-json/wp/v2/stack");
+      const response = await axios.get("/backend/wp-json/wp/v2/stack");
       setTaxonomies(response.data);
       setGotTaxonomies(true);
     } catch (err) {}
@@ -75,7 +77,7 @@ export default function Projects() {
     if (taxonomies.length > 0) {
       return taxonomies.map((tax) => {
         return (
-          <p
+          <span
             className={
               selectedTaxonomies.includes(tax.id.toString())
                 ? "tax active"
@@ -83,16 +85,30 @@ export default function Projects() {
             }
             key={tax.id}
             data-id={tax.id}
-            onClick={taxonomyClicked}
+            // onClick={taxonomyClicked}
           >
             {tax.name}
-          </p>
+          </span>
         );
       });
     } else {
       return gotTaxonomies ? "No taxonomies found" : "Loading";
     }
   };
+
+  const toRender = (post) => (
+    <div
+      className="post-item post"
+      data-stack={post.Stack.join(",")}
+      key={post.id}
+    >
+      <img src={post["_embedded"]["wp:featuredmedia"][0]["source_url"]} />
+      <div className="text-container">
+        <h3>{post.title.rendered}</h3>
+        <p>{post.excerpt.rendered}</p>
+      </div>
+    </div>
+  );
 
   const RenderPosts = () => {
     // display all posts if filter is not selected
@@ -101,27 +117,28 @@ export default function Projects() {
 
     if (filter.length > 0) {
       return filter.map((post) => {
-        return (
-          <p className="post" key={post.id} data-stack={post.Stack.join(",")}>
-            {post.title.rendered}
-          </p>
-        );
+        return toRender(post);
       });
     } else {
       return allPosts.map((post) => {
-        return (
-          <p className="post" key={post.id} data-stack={post.Stack.join(",")}>
-            {post.title.rendered}
-          </p>
-        );
+        return toRender(post);
       });
     }
   };
 
   return (
     <>
-      <RenderTaxonomies />
-      <RenderPosts />
+      <div className="inner-block">
+        <div className="projects-container main-margin">
+          <h2>Projects</h2>
+          <div className="tax-container">
+            <RenderTaxonomies />
+          </div>
+          <div className="posts-container">
+            <RenderPosts />
+          </div>
+        </div>
+      </div>
     </>
   );
 }

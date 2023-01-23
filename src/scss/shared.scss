@@ -12,19 +12,24 @@ body .wp-site-blocks {
 
 .main-margin {
   margin: 0px auto;
-  max-width: 1600px;
+  max-width: 1000px;
   padding: 0px 30px;
 }
 
-.main-cta .wp-block-button .wp-element-button {
-  background: $hightlight;
+.main-cta {
+  display: flex;
+  padding: 15px 25px;
+  font-family: $main-font;
+  width: fit-content;
+  cursor: pointer;
+  background: $highlight;
   transition: 0.2s;
   border: 2px solid transparent;
   font-weight: bold;
   font-size: 14px;
 
   &:hover {
-    background: $background-dark;
+    background: $highlight-hover;
     border-color: $white;
     color: $white;
   }

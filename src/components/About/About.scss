@@ -1,0 +1,71 @@
+@import "../../scss/variables.scss";
+
+.about-container {
+  .about-inner {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 30px;
+    margin: 0 auto;
+    padding-bottom: 0;
+    align-items: center;
+
+    .image-container {
+      background: $highlight-hover;
+      transition: 0.5s;
+      margin: 0 auto;
+      height: 300px;
+      width: 300px;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        img {
+          transition: 0.5s;
+          mix-blend-mode: unset;
+          filter: none;
+        }
+      }
+
+      img {
+        transition: 0.5s;
+        object-fit: cover;
+        mix-blend-mode: multiply;
+        filter: grayscale(100%) contrast(1);
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+        transform: rotate(-5deg);
+      }
+    }
+
+    p {
+      font-family: $main-font;
+      font-size: 18px;
+      line-height: 24px;
+
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+    }
+
+    h2 {
+      font-family: $titles;
+      font-size: clamp(32px, 5vw, 52px);
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+}
+
+@media only screen and (min-width: 768px) {
+  .about-container {
+    .about-inner {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 60px;
+    }
+  }
+}
