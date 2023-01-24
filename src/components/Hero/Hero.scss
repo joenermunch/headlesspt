@@ -3,24 +3,20 @@
 .hero-container {
   background-color: $white;
   color: #fff;
-  padding-top: 110px;
 
-  h1 {
-    margin: 0 0 25px 0;
-    color: $black;
-    font-family: $titles;
-    font-size: clamp(35px, 8vw, 80px);
-
-    strong {
-      font-weight: bold;
-    }
+  .hero-inner-container {
+    position: relative;
   }
 
-  p {
-    color: $black;
-    font-family: $main-font;
-    max-width: 600px;
-    margin: 0 0 50px 0;
+  .arrow-container {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    position: absolute;
+
+    a {
+      padding: 5px;
+    }
   }
 
   .subtitle-container {
@@ -40,8 +36,8 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
-  .hero-container {
-    padding-top: 150px;
+@media only screen and (max-width: 768px) {
+  .hero-container .arrow-container {
+    display: none;
   }
 }

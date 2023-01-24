@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Projects.scss";
 import Filterizr from "filterizr";
+import { AnimationOnScroll } from "react-animation-on-scroll";
 
 export default function Projects() {
   const [allPosts, setData] = useState([]);
@@ -14,7 +15,7 @@ export default function Projects() {
 
   const loadData = async () => {
     try {
-      const response = await axios.get("/backend/wp-json/wp/v2/project?_embed");
+      const response = await axios.get("/wp-json/wp/v2/project?_embed");
       setData(response.data);
       setGotData(true);
     } catch (err) {
@@ -24,7 +25,7 @@ export default function Projects() {
 
   const loadTax = async () => {
     try {
-      const response = await axios.get("/backend/wp-json/wp/v2/stack");
+      const response = await axios.get("/wp-json/wp/v2/stack");
       setTaxonomies(response.data);
       setGotTaxonomies(true);
     } catch (err) {}
@@ -121,23 +122,27 @@ export default function Projects() {
       });
     } else {
       return allPosts.map((post) => {
-        return toRender(post);
+        return filter.map((post) => {
+          return toRender(post);
+        });
       });
     }
   };
 
   return (
     <>
-      <div className="inner-block">
-        <div className="projects-container main-margin">
-          <h2>Projects</h2>
-          <div className="tax-container">
-            <RenderTaxonomies />
+      <div className="projects-container inner-block">
+        <AnimationOnScroll animateOnce={true} animateIn="animate__slideInUp">
+          <div className="main-margin">
+            <h2>Projects</h2>
+            <div className="tax-container">
+              <RenderTaxonomies />
+            </div>
+            <div className="posts-container">
+              <RenderPosts />
+            </div>
           </div>
-          <div className="posts-container">
-            <RenderPosts />
-          </div>
-        </div>
+        </AnimationOnScroll>
       </div>
     </>
   );

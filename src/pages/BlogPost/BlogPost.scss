@@ -1,0 +1,69 @@
+@import "../../scss/variables.scss";
+
+.post-container {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 30px;
+  }
+  position: relative;
+}
+
+.confetti-container {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.inner-hero {
+  background-color: $white;
+}
+
+.breadcrumbs a {
+  font-size: 24px;
+  font-family: $main-font;
+  color: $highlight;
+  text-decoration: none;
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.post-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 50px;
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 30px;
+  }
+
+  .sidebar {
+    h3 {
+      margin-top: 0;
+      font-weight: bold;
+    }
+
+    h4 {
+      padding-bottom: 10px;
+      border-bottom: 2px solid $highlight;
+      font-family: $titles;
+      font-size: 18px;
+      position: relative;
+      cursor: pointer;
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .post-columns {
+    grid-template-columns: 3fr 1fr;
+  }
+}

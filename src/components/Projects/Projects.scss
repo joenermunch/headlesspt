@@ -6,21 +6,12 @@
 }
 
 .projects-container {
-  h2 {
-    font-family: $titles;
-    font-size: clamp(32px, 5vw, 52px);
-  }
-
-  h3 {
-    font-family: $titles;
-    font-size: 24px;
-    color: $black;
-    margin-bottom: 15px;
-  }
+  background: $white;
 
   .tax-container {
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
 
     span {
@@ -45,7 +36,7 @@
 
   .posts-container {
     margin-top: 30px;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: 1fr;
     display: grid;
     gap: 30px;
 
@@ -63,5 +54,11 @@
 @media only screen and (min-width: 1140px) {
   .projects-container .posts-container .post-item {
     max-width: 600px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .projects-container .posts-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }

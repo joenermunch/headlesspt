@@ -78,8 +78,8 @@ h2.section-title {
       width: 40%;
       background: #fff;
       padding: 20px;
-      @include prefix(box-shadow, 0 3px 0 rgba(0, 0, 0, 0.1));
-      @include prefix(border-radius, 5px);
+      box-shadow: rgb(0 0 0 / 10%) 0px 10px 50px;
+      border-radius: 10px;
       @include prefix(transition, all 0.3s ease);
 
       h3 {
@@ -90,7 +90,7 @@ h2.section-title {
         color: #fff;
         margin: -20px -20px 0 -20px;
         font-weight: 300;
-        @include prefix(border-radius, 3px 3px 0 0);
+        @include prefix(border-radius, 10px 10px 0 0);
       }
 
       p {

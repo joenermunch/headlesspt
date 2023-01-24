@@ -2,6 +2,47 @@
 @import "reset.scss";
 @import "variables.scss";
 
+h1 {
+  margin: 0;
+  color: $black;
+  font-family: $titles;
+  font-size: clamp(35px, 8vw, 80px);
+
+  strong {
+    font-weight: bold;
+  }
+}
+
+h2 {
+  font-family: $titles;
+  font-size: clamp(32px, 5vw, 52px);
+}
+
+h3 {
+  font-family: $titles;
+  font-size: 24px;
+  color: $black;
+  margin-bottom: 15px;
+}
+
+p {
+  font-family: $main-font;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 24px;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.react-loading-skeleton {
+  margin-bottom: 20px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body .wp-site-blocks > * + * {
   margin: 0;
 }
@@ -12,7 +53,7 @@ body .wp-site-blocks {
 
 .main-margin {
   margin: 0px auto;
-  max-width: 1000px;
+  max-width: 1200px;
   padding: 0px 30px;
 }
 
@@ -35,15 +76,29 @@ body .wp-site-blocks {
   }
 }
 
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+
+  span.category {
+    color: #03c988;
+    padding: 0.5rem 2.75rem;
+    border: 1px solid #03c988;
+    border-radius: 10px;
+    text-transform: capitalize;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: clamp(14px, 2vw, 16px);
+  }
+}
+
 .inner-block {
   padding: 60px 0px;
 }
 
 @media only screen and (min-width: 1000px) {
-  .main-margin {
-    padding: 0 150px;
-  }
-
   .inner-block {
     padding: 100px 0px;
   }
